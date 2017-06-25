@@ -13,11 +13,11 @@ server.on('request', function(req, res) {
   if (comando == 'obter') {
 	console.log("Entrei no obter")
 	
-	fs.readFile("/tmp/barragem_percent_control.txt", "utf8", function(err, data) {
-		if (err) {
+	fs.readFile("/tmp/barragem_input_control.txt", "utf8", function(err, data) {
+		if (err != null) {
 			res.end("0|0|0")
 			console.log("treta")
-			fs.writeFile("/tmp/barragem_percent_control.txt", "0|0|0", function(err) {
+			fs.writeFile("/tmp/barragem_input_control.txt", "0|0|0", function(err) {
 				if(err) {
 					//Se der falha na gravacao do arquivo, o servidor chamador, recebera um retorno de erro
 					console.log("Falha na gravacao " + err)
